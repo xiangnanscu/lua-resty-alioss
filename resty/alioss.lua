@@ -1,23 +1,10 @@
 local cjson_encode = require "cjson".encode
 local Array = require "resty.array"
-local dotenv = require "resty.dotenv"
+local getenv = require "resty.dotenv".getenv
 local encode_base64 = ngx.encode_base64
 local hmac_sha1 = ngx.hmac_sha1
 local ngx_time = ngx.time
 
-
-local JSON_ENV
-local function getenv(key)
-  if not JSON_ENV then
-    local json = dotenv { path = { '.env', '.env.local' } }
-    JSON_ENV = json
-  end
-  if key then
-    return JSON_ENV[key]
-  else
-    return JSON_ENV
-  end
-end
 
 local size_table = {
   k = 1024,

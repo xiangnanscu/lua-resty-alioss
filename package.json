@@ -4,6 +4,7 @@
   "description": "get payload of alioss SDK",
   "main": "index.js",
   "scripts": {
+    "rc": "yarn release && yarn push",
     "release": "opm upload && opm clean dist",
     "commit": "git add . && git commit -am ",
     "push": "yarn commit",
